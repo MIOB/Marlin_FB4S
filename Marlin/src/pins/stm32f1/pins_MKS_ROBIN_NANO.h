@@ -296,7 +296,7 @@ BlTouch
 /*
 Модуль MKS WIFI
 */
-#define MKS_WIFI
+//#define MKS_WIFI
 
 #ifdef MKS_WIFI
  #undef PLATFORM_M997_SUPPORT
@@ -332,7 +332,7 @@ BlTouch
   #define Z_SERIAL_RX_PIN                   PA1
 
   #define E0_SERIAL_TX_PIN                  PA6
-  #define E0_SERIAL_RX_PIN                  PA1
+  #define E0_SERIAL_RX_PIN                  PA6
 
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE 19200
