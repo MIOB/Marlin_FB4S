@@ -119,7 +119,7 @@ void mks_wifi_start_file_upload(ESP_PROTOC_FRAME *packet){
    thermalManager.setTargetBed(0);
    thermalManager.setTargetHotend(0,0);
    thermalManager.manage_heater();
-   OUT_WRITE(HEATER_1_PIN,HIGH);
+   OUT_WRITE(FAN1_PIN,HIGH);
  	//Установить имя файла. Смещение на 3 байта, чтобы добавить путь к диску
    file_name[0]='0';
    file_name[1]=':';
@@ -198,6 +198,8 @@ void mks_wifi_start_file_upload(ESP_PROTOC_FRAME *packet){
    DEBUG("File buff: %0X size %d (%0X)", file_buff, FILE_BUFFER_SIZE, FILE_BUFFER_SIZE);
 
    while(dma_timeout-- > 0){
+
+      iwdg_feed();
 
       if(DMA1->ISR & DMA_ISR_TCIF5){
          DMA1->IFCR = DMA_IFCR_CGIF5|DMA_IFCR_CTEIF5|DMA_IFCR_CHTIF5|DMA_IFCR_CTCIF5;
